@@ -28,11 +28,6 @@ function ms_scripts_styles() {
 
 }
 
-function custom_load_speaklove_custom() {
-//	wp_enqueue_style( 'custom-stylesheet', CHILD_URL . 'https://content.wpvkp.com/custom.css', array(), PARENT_THEME_VERSION );
-	wp_enqueue_style( 'speaklove-custom', CHILD_URL . '/css/speaklove-custom.css', array (), PARENT_THEME_VERSION );
-}
-
 //* Add HTML5 markup structure
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
@@ -223,4 +218,10 @@ function sp_footer_creds_filter($creds)
     $creds = 'Copyright '.date('Y').' Speak Love';
 
     return $creds;
+}
+
+//* Add custom css
+add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
+function custom_load_custom_style_sheet() {
+	wp_enqueue_style( 'custom-stylesheet', CHILD_URL . 'https://speak-love.org/assets/speaklove-custom.css', array(), PARENT_THEME_VERSION );
 }
