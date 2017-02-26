@@ -190,3 +190,33 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Welcome Message', 'modern-studio' ),
 	'description' => __( 'Widgets in this section will display above posts at the top of the home page.', 'modern-studio' ),
 ) );
+
+//*remove worthless dashboard panels
+function remove_dashboard_meta() {
+	remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );  // Incoming Links
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );   // Other WordPress News
+}
+
+add_action( 'admin_init', 'remove_dashboard_meta' );
+
+
+//*remove welcome dashboard panel
+function remove_welcome_panel() {
+	remove_action( 'welcome_panel', 'wp_welcome_panel' );
+	$user_id = get_current_user_id();
+	if ( 0 !== get_user_meta( $user_id, 'show_welcome_panel', true ) ) {
+		update_user_meta( $user_id, 'show_welcome_panel', 0 );
+	}
+}
+
+//* Change the footer text
+add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+function sp_footer_creds_filter($creds)
+{
+    $creds = 'Copyright '.date('Y').' Speak Love';
+
+    return $creds;
+}
