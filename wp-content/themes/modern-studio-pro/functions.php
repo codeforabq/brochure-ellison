@@ -223,5 +223,5 @@ function sp_footer_creds_filter($creds)
 //* Add custom css
 add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 function custom_load_custom_style_sheet() {
-	wp_enqueue_style( 'custom-stylesheet', CHILD_URL . 'https://speak-love.org/assets/speaklove-custom.css', array(), PARENT_THEME_VERSION );
+	wp_enqueue_style( 'modern-studio-pro', get_stylesheet_directory_uri() . '/assets/speaklove-custom.css' );
 }
