@@ -25,8 +25,12 @@ function ms_scripts_styles() {
 
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:400,700,400italic|Montserrat', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'speaklove-custom', get_stylesheet_directory_uri().'/css/speaklove-custom.css' );
 
+}
+
+function custom_load_speaklove_custom() {
+//	wp_enqueue_style( 'custom-stylesheet', CHILD_URL . 'https://content.wpvkp.com/custom.css', array(), PARENT_THEME_VERSION );
+	wp_enqueue_style( 'speaklove-custom', CHILD_URL . '/css/speaklove-custom.css', array (), PARENT_THEME_VERSION );
 }
 
 //* Add HTML5 markup structure
