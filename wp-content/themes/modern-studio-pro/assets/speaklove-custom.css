@@ -1,3 +1,7 @@
 /*Speak Love Custom CSS*/
 
 
+.slides {
+	max-height: 200px;
+	max-width: 50px;
+}
